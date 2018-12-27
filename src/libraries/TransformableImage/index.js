@@ -166,6 +166,7 @@ export default class TransformableImage extends PureComponent {
             imageLoaded,
             source: image.source,
             style: [style, { backgroundColor: 'transparent' }],
+            resizeMethod : 'resize',
             resizeMode: resizeMode,
             onLoadStart: this.onLoadStart,
             onLoad: this.onLoad,
