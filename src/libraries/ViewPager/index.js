@@ -30,8 +30,9 @@ export default class ViewPager extends PureComponent {
         onPageSelected: PropTypes.func,
         onPageScrollStateChanged: PropTypes.func,
         onPageScroll: PropTypes.func,
-        flatListProps: PropTypes.object
-    };
+        flatListProps: PropTypes.object,
+        resizeMode: PropTypes.string
+      };
 
     static defaultProps = {
         initialPage: 0,
@@ -40,7 +41,8 @@ export default class ViewPager extends PureComponent {
         pageDataArray: [],
         initialListSize: 10,
         removeClippedSubviews: true,
-        flatListProps: {}
+        flatListProps: {},
+        resizeMode: 'contain'
     };
 
     currentPage = undefined; // Do not initialize to make onPageSelected(0) be dispatched
@@ -265,7 +267,7 @@ export default class ViewPager extends PureComponent {
 
     renderRow ({ item, index }) {
         const { width, height } = this.state;
-        let page = this.props.renderPage(item, index);
+        let page = this.props.renderPage(item, index, this.props.resizeMode);
 
         const layout = {
             width,
